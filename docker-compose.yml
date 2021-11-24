@@ -1,0 +1,35 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    container_name: finapi
+    ports: 
+      - 3333:3333
+    volumes:
+      - .:/usr/app
+    links:
+      - db
+    depends_on:
+      - db
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=finapi
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=docker
+    volumes:
+      - pgdata:/data/postgres
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    network_mode: host
+
+volumes:
+  pgdata:
+    driver: local
