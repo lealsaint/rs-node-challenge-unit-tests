@@ -32,7 +32,7 @@ describe("Show user profile", () => {
     expect(user).toBeInstanceOf(User);
   });
 
-  it("Should not be able to show user profile if user id does not exists", () => {
+  it("Should not be able to show user profile if user does not exists", () => {
     expect(async () => {
       await createUserUseCase.execute({
         name: "User Top",

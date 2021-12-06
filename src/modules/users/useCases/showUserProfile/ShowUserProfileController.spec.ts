@@ -41,7 +41,7 @@ describe("Show user profile", () => {
     expect(response.body).toHaveProperty("id");
   });
 
-  it("Should not be able to show user profile if user id does not exists", async () => {
+  it("Should not be able to show user profile if user does not exists", async () => {
     const user = {
       name: "User Top",
       email: "user@example.com",
